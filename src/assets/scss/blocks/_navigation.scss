@@ -1,0 +1,15 @@
+.main-nav__list {
+  @apply flex gap-8 items-center;
+}
+
+.main-nav__item {
+  @apply mx-4 text-2xl text-amber-600 flex gap-2 items-center;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    @apply text-amber-500;
+  }
+}
