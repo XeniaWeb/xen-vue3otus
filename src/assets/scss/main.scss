@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500;600;700&family=Open+Sans&display=swap');
 @import 'base';
 @import 'blocks/style';
 
 h1 {
-  @apply text-3xl font-bold text-yellow-600;
+  @apply text-3xl font-bold text-amber-600;
 }
 
-h1 {
-  @apply text-3xl font-light text-blue-600;
+*,
+input,
+input[type]:focus {
+  @apply outline-none focus:ring-amber-500 focus:ring-offset-1;
 }
 
 #app {

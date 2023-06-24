@@ -1,16 +1,15 @@
 <script setup>
-import BaseLayout from "@/views/layouts/BaseLayout.vue";
-import products from '@/data/products.json';
-import ProductCard from "@/components/ProductCard.vue";
+import BaseLayout from '@/views/layouts/BaseLayout.vue'
+import products from '@/data/products.json'
+import ProductCard from '@/components/ProductCard.vue'
 </script>
 
 <template>
   <BaseLayout>
-    <div class="p-4 my-6">
-      <h1 class="text-amber-700 pb-4 ">Страница продуктов</h1>
-      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 content-stretch">
+    <div class="my-6 p-4">
+      <h1 class="pb-4 text-amber-700">Страница продуктов</h1>
+      <ul class="grid grid-cols-1 content-stretch gap-4 md:grid-cols-2 lg:grid-cols-3">
         <li v-for="product in products" :key="product.id" class="inline-block">
-
           <ProductCard
             :title="product.title"
             :price="product.price"
@@ -19,7 +18,6 @@ import ProductCard from "@/components/ProductCard.vue";
             :rating="product.rating"
             :description="product.description"
           />
-
         </li>
       </ul>
     </div>

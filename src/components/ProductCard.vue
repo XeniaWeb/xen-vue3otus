@@ -10,15 +10,17 @@ const product = defineProps([
 </script>
 
 <template>
-  <div class="border bg-white rounded-lg shadow flex flex-col items-center mb-2 py-2 px-4 h-full ">
-    <img :src=product.image :alt=product.title class="w-1/3 block  my-auto "/>
-    <h2 class="text-emerald-600 text-xl py-2 px-4">{{ product.title }}</h2>
-    <p class=" text-2xl md:text-xl font-bold w-full text-center border-t-2">RUB {{ product.price }}</p>
+  <div class="mb-2 flex h-full flex-col items-center rounded-lg border bg-white px-4 py-2 shadow">
+    <img :src="product.image" :alt="product.title" class="my-auto block w-1/3" />
+    <h2 class="px-4 py-2 text-xl text-emerald-600">{{ product.title }}</h2>
+    <p class="w-full border-t-2 text-center text-2xl font-bold md:text-xl">
+      RUB {{ product.price }}
+    </p>
     <p>{{ product.description }}</p>
     <p class="font-bold">Category: {{ product.category }}</p>
     <p class="text-2xl">
       <span class="font-bold text-emerald-600">
-         {{ product.rating.rate }}
+        {{ product.rating.rate }}
       </span>
     </p>
   </div>
