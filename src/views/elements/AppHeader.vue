@@ -8,7 +8,7 @@ import { ShoppingCartIcon } from '@heroicons/vue/24/outline'
 </script>
 
 <template>
-  <header class="sticky w-full bg-white/50">
+  <header class="sticky w-full bg-white/50 shadow shadow-gray-100">
     <div class="container mx-auto px-4">
       <nav class="top-menu flex justify-between py-2">
         <div class="top-menu__contacts contacts flex">

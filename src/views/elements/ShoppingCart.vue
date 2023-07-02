@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="rounded-xl border border-gray-300 bg-white px-4 py-8">
+  <div class="content-end rounded-xl border border-gray-300 bg-white px-4 py-8">
     <h2 class="cart__title font-montserrat text-xl font-bold">Order Summary</h2>
     <p class="cart__sub-title mb-10 text-xs">
       Price can change depending on shipping method and taxes of your state.

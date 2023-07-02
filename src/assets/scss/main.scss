@@ -8,7 +8,8 @@ h1 {
 
 *,
 input,
-input[type]:focus {
+input[type]:focus,
+textarea:focus {
   @apply outline-none focus:ring-amber-500 focus:ring-offset-1;
 }
 

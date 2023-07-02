@@ -1,7 +1,6 @@
 <script setup>
 import BaseLayout from '@/views/layouts/BaseLayout.vue'
 import { RouterLink } from 'vue-router'
-import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid'
 import { computed, reactive } from 'vue'
 
 const searchText = reactive({

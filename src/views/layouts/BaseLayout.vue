@@ -4,7 +4,7 @@ import AppFooter from '@/views/elements/AppFooter.vue'
 </script>
 
 <template>
-  <div class="grid-base min-h-screen">
+  <div class="grid-base min-h-screen bg-white">
     <AppHeader />
     <main class="container">
       <slot />
