@@ -28,7 +28,10 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
               class="form__input relative mt-3 w-full rounded-xl border border-gray-300 bg-gray-50 p-3 text-xs placeholder:text-xs placeholder:text-gray-400"
               placeholder="Nina"
             />
-            <label for="first_name" class="form__label absolute -top-2 left-0 font-montserrat font-semibold">
+            <label
+              for="first_name"
+              class="form__label absolute -top-2 left-0 font-montserrat font-semibold"
+            >
               First name:
             </label>
           </div>

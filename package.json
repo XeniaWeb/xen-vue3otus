@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite --port 3000",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
@@ -12,9 +12,10 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.18",
+    "@vee-validate/yup": "^4.10.6",
     "axios": "^1.4.0",
-    "pinia": "^2.0.35",
-    "vee-validate": "^4.9.6",
+    "pinia": "^2.1.3",
+    "vee-validate": "^4.10.6",
     "vue": "^3.3.4",
     "vue-router": "^4.1.6"
   },

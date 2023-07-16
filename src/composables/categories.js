@@ -1,4 +1,4 @@
-import {ref} from 'vue'
+import { ref } from 'vue'
 import axios from 'axios'
 
 export default function useCategories() {
@@ -6,7 +6,8 @@ export default function useCategories() {
 
   const getCategories = async () => {
     await axios.get(
-      'http://localhost/api/v1/categories'
+      'https://larapi.xeniaweb.site/api/v1/categories'
+      // 'https://larapi.xeniaweb.site/api/v1/categories'
     ).then((response) => {
       categories.value = response.data.data
     })

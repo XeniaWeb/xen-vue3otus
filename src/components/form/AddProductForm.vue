@@ -1,9 +1,9 @@
 <script setup>
-import IconSecuritySafety from "@/components/icons/IconSecuritySafety.vue";
-import {computed, onMounted, reactive} from "vue";
-import useCategories from "@/composables/categories";
+import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
+import { computed, onMounted, reactive } from 'vue'
+import useCategories from '@/composables/categories'
 
-const { categories, getCategories } = useCategories();
+const { categories, getCategories } = useCategories()
 
 onMounted(getCategories)
 
@@ -48,7 +48,10 @@ const previewPhotoPath = computed(() => {
             placeholder="Product name..."
             type="text"
           />
-          <label class="form__label absolute -top-2 left-0 font-montserrat font-semibold" for="product_title">
+          <label
+            class="form__label absolute -top-2 left-0 font-montserrat font-semibold"
+            for="product_title"
+          >
             Title:
           </label>
         </div>
@@ -58,10 +61,15 @@ const previewPhotoPath = computed(() => {
             id="category"
             class="form__input relative mt-3 w-full rounded-xl border border-gray-300 bg-gray-50 p-3 text-xs placeholder:text-xs placeholder:text-gray-400"
           >
-            <option selected disabled>Select Category... </option>
-            <option v-for="category in categories" :key="category.id" :value="category.id" >{{ category.title }}</option>
+            <option selected disabled>Select Category...</option>
+            <option v-for="category in categories" :key="category.id" :value="category.id">
+              {{ category.title }}
+            </option>
           </select>
-          <label class="form__label absolute -top-2 left-0 font-montserrat font-semibold" for="category">
+          <label
+            class="form__label absolute -top-2 left-0 font-montserrat font-semibold"
+            for="category"
+          >
             Category:
           </label>
         </div>
@@ -91,27 +99,25 @@ const previewPhotoPath = computed(() => {
             Description:
           </label>
         </div>
-        <div class="mb-8 p-4 shadow rounded-xl inline-flex">
+        <div class="mb-8 inline-flex rounded-xl p-4 shadow">
           <input
-            class="mb-6 file:bg-amber-400 file:border-none  file:hover:bg-amber-500 file:px-8 file:py-2 file:transition-colors file:font-montserrat file:text-sm file:font-bold file:text-white file:rounded-lg"
+            class="mb-6 file:rounded-lg file:border-none file:bg-amber-400 file:px-8 file:py-2 file:font-montserrat file:text-sm file:font-bold file:text-white file:transition-colors file:hover:bg-amber-500"
             name="image"
             type="file"
             @change="uploadFile"
           />
 
-          <img v-if="newProduct.image" :src="previewPhotoPath" alt="" class=" ml-8 w-auto h-36"/>
+          <img v-if="newProduct.image" :src="previewPhotoPath" alt="" class="ml-8 h-36 w-auto" />
         </div>
-
-
       </fieldset>
       <button
         class="mb-8 rounded-lg border border-amber-700 bg-amber-600 px-12 py-3 font-montserrat text-sm font-bold text-white transition-colors hover:bg-amber-500"
         type="submit"
       >
-        Complete order
+        Save product
       </button>
       <div class="mb-2 w-1/3">
-        <IconSecuritySafety/>
+        <IconSecuritySafety />
         <h6 class="my-2 font-montserrat font-semibold">All your data are safe</h6>
         <p class="text-xs text-gray-400">
           We are using the most advanced security to provide you the best experience ever.
@@ -119,9 +125,6 @@ const previewPhotoPath = computed(() => {
       </div>
     </form>
   </div>
-
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

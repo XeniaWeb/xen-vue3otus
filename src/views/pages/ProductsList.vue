@@ -3,8 +3,7 @@ import { onMounted } from 'vue'
 import BaseLayout from '@/views/layouts/BaseLayout.vue'
 import useProducts from '@/composables/products'
 import ProductCard from '@/components/ProductCard.vue'
-// import AppLogoXeniaWeb from "@/views/elements/AppLogoXeniaWeb.vue";
-import {RouterLink} from "vue-router";
+import { RouterLink } from 'vue-router'
 
 const { products, getProducts } = useProducts()
 onMounted(getProducts)
@@ -12,14 +11,14 @@ onMounted(getProducts)
 
 <template>
   <BaseLayout>
-    <RouterLink :to="{ name: 'add_product' }" class="main-nav__item">
-    <button >Add New</button>
-    </RouterLink>
     <div class="my-6 p-4">
-      <h1 class="pb-4 text-amber-700">Страница продуктов</h1>
-      <ul
-        class="grid grid-cols-1 content-stretch gap-4 md:grid-cols-2 lg:grid-cols-3"
-      >
+      <div class="mb-4 flex items-center justify-between">
+        <h1 class="font-montserrat text-amber-500">Products Page</h1>
+        <RouterLink :to="{ name: 'add_product' }" class="main-nav__item">
+          <button class="btn-primary text-sm font-bold">Add New</button>
+        </RouterLink>
+      </div>
+      <ul class="grid grid-cols-1 content-stretch gap-4 md:grid-cols-2 lg:grid-cols-3">
         <li v-for="product in products" :key="product.id" class="inline-block">
           <ProductCard
             :categoryId="product.categoryId"
@@ -34,3 +33,9 @@ onMounted(getProducts)
     </div>
   </BaseLayout>
 </template>
+
+<style scoped>
+.btn-primary {
+  @apply block max-w-[240px] rounded-lg border-2 border-amber-500 px-2 py-2 text-center font-montserrat text-amber-500 transition-colors hover:bg-amber-500 hover:text-white;
+}
+</style>
