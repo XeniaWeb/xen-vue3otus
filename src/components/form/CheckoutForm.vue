@@ -6,11 +6,33 @@ import IconPayPal from '@/components/icons/IconPayPal.vue'
 import IconVisa from '@/components/icons/IconVisa.vue'
 import IconMasterCard from '@/components/icons/IconMasterCard.vue'
 import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
+import {reactive} from "vue";
+import useCustomers from "@/composables/customer";
+
+const { storeCustomer } = useCustomers()
+
+const newCustomer = reactive({
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  address: '',
+  city: '',
+  country: '',
+  zip: '',
+  diffAddress: false,
+  deliveryAddress: '',
+  comment: '',
+  billMethod: null,
+  paymentMethod: null,
+  newsletter: true,
+  terms: false,
+})
 </script>
 
 <template>
   <div class="flex flex-col px-8 py-2">
-    <form>
+    <form @submit.prevent="storeCustomer(newCustomer)">
       <!-- TODO разделить на компоненты -->
       <!-- Billing info-->
       <fieldset class="form__fieldset mb-16">
@@ -22,6 +44,7 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
         <div class="input-group mb-8 grid grid-cols-2 gap-8">
           <div>
             <input
+              v-model="newCustomer.firstName"
               id="first_name"
               name="first_name"
               type="text"
@@ -37,6 +60,7 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
           </div>
           <div>
             <input
+              v-model="newCustomer.lastName"
               id="last_name"
               name="last_name"
               type="text"
@@ -49,6 +73,7 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
           </div>
           <div>
             <input
+              v-model="newCustomer.email"
               id="email"
               name="email"
               type="text"
@@ -61,6 +86,7 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
           </div>
           <div>
             <input
+              v-model="newCustomer.phone"
               id="phone"
               name="phone"
               type="text"
@@ -73,6 +99,7 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
           </div>
           <div>
             <input
+              v-model="newCustomer.address"
               id="address"
               name="address"
               type="text"
@@ -85,6 +112,7 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
           </div>
           <div>
             <input
+              v-model="newCustomer.city"
               id="city"
               name="city"
               type="text"
@@ -97,6 +125,7 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
           </div>
           <div>
             <input
+              v-model="newCustomer.country"
               id="country"
               name="country"
               type="text"
@@ -109,6 +138,7 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
           </div>
           <div>
             <input
+              v-model="newCustomer.zip"
               id="zip"
               name="zip"
               type="text"
@@ -122,13 +152,26 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
         </div>
         <div class="mt-3 inline-flex rounded-xl border border-gray-300 bg-gray-50 p-3 text-xs">
           <input
+            v-model="newCustomer.diffAddress"
             class="border border-gray-300 bg-gray-50 checked:bg-amber-600 focus:text-amber-600"
             type="checkbox"
             name="diff_address"
-            value=""
           />
           <label for="zip" class="ml-4 font-openSans text-[14px]">
             Ship to a different address?
+          </label>
+        </div>
+        <div v-show="newCustomer.diffAddress === true" class="mt-8">
+          <input
+            v-model="newCustomer.deliveryAddress"
+            id="delivery_address"
+            name="delivery_address"
+            type="text"
+            class="relative mt-3 w-full rounded-xl border border-gray-300 bg-gray-50 p-3 text-xs placeholder:text-xs placeholder:text-gray-400"
+            placeholder="Different delivery address"
+          />
+          <label for="delivery_address" class="absolute -top-2 left-0 font-montserrat font-semibold">
+            Delivery address:
           </label>
         </div>
       </fieldset>
@@ -136,7 +179,7 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
       <fieldset class="mb-16 rounded-xl">
         <legend class="font-montserrat text-xl font-bold">Billing method</legend>
         <div class="mb-8 flex w-full justify-between">
-          <span class="block">Please enter your payment method</span>
+          <span class="block">Please enter your billing method</span>
           <span class="block">Step 2 of 5</span>
         </div>
         <div
@@ -144,12 +187,14 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
         >
           <div class="">
             <input
+              v-model="newCustomer.billMethod"
+              id="fedexRadio"
               class="border border-gray-300 bg-gray-50 checked:bg-amber-600 focus:text-amber-600"
               type="radio"
               name="bill_method"
               value="fedex"
             />
-            <label for="zip" class="ml-4 font-openSans text-[14px] font-semibold"> FedEx </label>
+            <label for="fedexRadio" class="ml-4 font-openSans text-[14px] font-semibold"> FedEx </label>
           </div>
           <div class="flex justify-self-end">
             <span class="font-semibold text-amber-600">+32 CHF</span>
@@ -162,12 +207,14 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
         >
           <div class="">
             <input
+              v-model="newCustomer.billMethod"
+              id="dhlRadio"
               class="border border-gray-300 bg-gray-50 checked:bg-amber-600 focus:text-amber-600"
               type="radio"
               name="bill_method"
               value="dhl"
             />
-            <label for="zip" class="ml-4 font-openSans text-[14px] font-semibold"> DHL </label>
+            <label for="dhlRadio" class="ml-4 font-openSans text-[14px] font-semibold"> DHL </label>
           </div>
           <div class="flex justify-self-end">
             <span class="font-semibold text-amber-600">+15 CHF</span>
@@ -188,13 +235,15 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
         >
           <div class="">
             <input
+              v-model="newCustomer.paymentMethod"
+              id="creditCard"
               class="border border-gray-300 bg-gray-50 checked:bg-amber-600 focus:text-amber-600"
               type="radio"
               name="payment_method"
               value="credit_card"
               checked
             />
-            <label for="zip" class="ml-4 font-openSans text-[14px] font-semibold">
+            <label for="creditCard" class="ml-4 font-openSans text-[14px] font-semibold">
               Credit card
             </label>
           </div>
@@ -208,12 +257,14 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
         >
           <div class="">
             <input
+              v-model="newCustomer.paymentMethod"
+              id="paypal"
               class="border border-gray-300 bg-gray-50 checked:bg-amber-600 focus:text-amber-600"
               type="radio"
               name="payment_method"
               value="paypal"
             />
-            <label for="zip" class="ml-4 font-openSans text-[14px] font-semibold"> PayPal </label>
+            <label for="paypal" class="ml-4 font-openSans text-[14px] font-semibold"> PayPal </label>
           </div>
           <IconPayPal class="justify-self-end" />
         </div>
@@ -222,12 +273,14 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
         >
           <div class="">
             <input
+              v-model="newCustomer.paymentMethod"
+              id="bitcoin"
               class="border border-gray-300 bg-gray-50 checked:bg-amber-600 focus:text-amber-600"
               type="radio"
               name="payment_method"
               value="bitcoin"
             />
-            <label for="zip" class="ml-4 font-openSans text-[14px] font-semibold"> Bitcoin </label>
+            <label for="bitcoin" class="ml-4 font-openSans text-[14px] font-semibold"> Bitcoin </label>
           </div>
           <IconBitcoin class="justify-self-end" />
         </div>
@@ -241,14 +294,14 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
         </div>
         <div>
           <textarea
+            v-model="newCustomer.comment"
             rows="4"
-            id="order_notes"
-            name="order_notes"
+            id="comment"
+            name="comment"
             class="relative mt-3 w-full rounded-xl border border-gray-300 bg-gray-50 p-3 text-xs placeholder:text-xs placeholder:text-gray-400"
             placeholder="Need a specific delivery day? Sending a gift? Let’s say ..."
-            value=""
           ></textarea>
-          <label for="order_notes" class="absolute -top-2 left-0 font-montserrat font-semibold">
+          <label for="comment" class="absolute -top-2 left-0 font-montserrat font-semibold">
             Order notes:
           </label>
         </div>
@@ -264,30 +317,35 @@ import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
         </div>
         <div class="mt-3 inline-flex rounded-xl border border-gray-300 bg-gray-50 p-3 text-xs">
           <input
+            v-model="newCustomer.newsletter"
+            id="newsletter"
             class="border border-gray-300 bg-gray-50 checked:bg-amber-600 focus:text-amber-600"
             type="checkbox"
             name=""
             value=""
           />
-          <label for="zip" class="ml-4 font-openSans text-[14px]">
-            I agree with sending an Marketing and newsletter emails. No spam, promissed!
+          <label for="newsletter" class="ml-4 font-openSans text-[14px]">
+            I agree with sending an Marketing and newsletter emails. No spam, promised!
           </label>
         </div>
         <div class="mt-3 inline-flex rounded-xl border border-gray-300 bg-gray-50 p-3 text-xs">
           <input
+            v-model="newCustomer.terms"
+            id="terms"
             class="border border-gray-300 bg-gray-50 checked:bg-amber-600 focus:text-amber-600"
             type="checkbox"
             name=""
             value=""
           />
-          <label for="zip" class="ml-4 font-openSans text-[14px]">
+          <label for="terms" class="ml-4 font-openSans text-[14px]">
             I agree with our terms and conditions and privacy policy.
           </label>
         </div>
       </fieldset>
       <button
+        :disabled="newCustomer.terms !== true"
         type="submit"
-        class="mb-8 rounded-lg border border-amber-700 bg-amber-600 px-12 py-3 font-montserrat text-sm font-bold text-white transition-colors hover:bg-amber-500"
+        class="disabled:opacity-75 mb-8 rounded-lg border border-amber-700 bg-amber-600 px-12 py-3 font-montserrat text-sm font-bold text-white transition-colors enabled:hover:bg-amber-500 disabled:cursor-not-allowed"
       >
         Complete order
       </button>

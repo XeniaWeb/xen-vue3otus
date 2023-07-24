@@ -2,8 +2,10 @@
 import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
 import { computed, onMounted, reactive } from 'vue'
 import useCategories from '@/composables/categories'
+import useProducts from '@/composables/products'
 
 const { categories, getCategories } = useCategories()
+const { storeProduct } = useProducts()
 
 onMounted(getCategories)
 
@@ -15,12 +17,7 @@ const newProduct = reactive({
   image: null
 })
 
-function createProduct() {
-  console.log('Воооот!', newProduct, newProduct.image)
-}
-
 const uploadFile = (e) => {
-  console.log(e.target.files)
   newProduct.image = e.target.files[0]
 }
 
@@ -34,7 +31,7 @@ const previewPhotoPath = computed(() => {
 
 <template>
   <div class="flex flex-col px-8 py-8">
-    <form @submit.prevent="createProduct">
+    <form @submit.prevent="storeProduct(newProduct)">
       <fieldset class="form__fieldset mb-16">
         <legend class="form__legend font-montserrat text-xl font-bold">New Product</legend>
         <div class="form__sub-legend mb-8 flex w-full">
