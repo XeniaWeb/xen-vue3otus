@@ -1,6 +1,6 @@
 <script setup>
 import BaseLayout from '@/views/layouts/BaseLayout.vue'
-import ShoppingCart from '@/views/elements/ShoppingCart.vue'
+import ShoppingCart from '@/components/ShoppingCart.vue'
 import CheckoutForm from '@/components/form/CheckoutForm.vue'
 </script>
 

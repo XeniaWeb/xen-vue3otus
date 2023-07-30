@@ -36,7 +36,8 @@ export default function useProducts() {
         product,
         {
           headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'multipart/form-data',
+            Accept: 'application/json'
           }
         }
       )

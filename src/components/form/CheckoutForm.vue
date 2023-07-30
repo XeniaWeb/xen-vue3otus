@@ -6,8 +6,8 @@ import IconPayPal from '@/components/icons/IconPayPal.vue'
 import IconVisa from '@/components/icons/IconVisa.vue'
 import IconMasterCard from '@/components/icons/IconMasterCard.vue'
 import IconSecuritySafety from '@/components/icons/IconSecuritySafety.vue'
-import {reactive} from "vue";
-import useCustomers from "@/composables/customer";
+import { reactive } from 'vue'
+import useCustomers from '@/composables/customer'
 
 const { storeCustomer } = useCustomers()
 
@@ -26,7 +26,7 @@ const newCustomer = reactive({
   billMethod: null,
   paymentMethod: null,
   newsletter: true,
-  terms: false,
+  terms: false
 })
 </script>
 
@@ -170,7 +170,10 @@ const newCustomer = reactive({
             class="relative mt-3 w-full rounded-xl border border-gray-300 bg-gray-50 p-3 text-xs placeholder:text-xs placeholder:text-gray-400"
             placeholder="Different delivery address"
           />
-          <label for="delivery_address" class="absolute -top-2 left-0 font-montserrat font-semibold">
+          <label
+            for="delivery_address"
+            class="absolute -top-2 left-0 font-montserrat font-semibold"
+          >
             Delivery address:
           </label>
         </div>
@@ -194,7 +197,9 @@ const newCustomer = reactive({
               name="bill_method"
               value="fedex"
             />
-            <label for="fedexRadio" class="ml-4 font-openSans text-[14px] font-semibold"> FedEx </label>
+            <label for="fedexRadio" class="ml-4 font-openSans text-[14px] font-semibold">
+              FedEx
+            </label>
           </div>
           <div class="flex justify-self-end">
             <span class="font-semibold text-amber-600">+32 CHF</span>
@@ -264,7 +269,9 @@ const newCustomer = reactive({
               name="payment_method"
               value="paypal"
             />
-            <label for="paypal" class="ml-4 font-openSans text-[14px] font-semibold"> PayPal </label>
+            <label for="paypal" class="ml-4 font-openSans text-[14px] font-semibold">
+              PayPal
+            </label>
           </div>
           <IconPayPal class="justify-self-end" />
         </div>
@@ -280,7 +287,9 @@ const newCustomer = reactive({
               name="payment_method"
               value="bitcoin"
             />
-            <label for="bitcoin" class="ml-4 font-openSans text-[14px] font-semibold"> Bitcoin </label>
+            <label for="bitcoin" class="ml-4 font-openSans text-[14px] font-semibold">
+              Bitcoin
+            </label>
           </div>
           <IconBitcoin class="justify-self-end" />
         </div>
@@ -345,7 +354,7 @@ const newCustomer = reactive({
       <button
         :disabled="newCustomer.terms !== true"
         type="submit"
-        class="disabled:opacity-75 mb-8 rounded-lg border border-amber-700 bg-amber-600 px-12 py-3 font-montserrat text-sm font-bold text-white transition-colors enabled:hover:bg-amber-500 disabled:cursor-not-allowed"
+        class="mb-8 rounded-lg border border-amber-700 bg-amber-600 px-12 py-3 font-montserrat text-sm font-bold text-white transition-colors enabled:hover:bg-amber-500 disabled:cursor-not-allowed disabled:opacity-75"
       >
         Complete order
       </button>
