@@ -12,7 +12,7 @@ import {
 <template>
   <ul class="main-nav__list">
     <li>
-      <RouterLink :to="{ name: 'products' }" class="main-nav__link">
+      <RouterLink :to="{ name: 'products.index' }" class="main-nav__link">
         <Square3Stack3DIcon class="main-nav__icon" />
         Products
       </RouterLink>

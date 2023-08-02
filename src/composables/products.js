@@ -1,9 +1,13 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import router from '@/router'
+import {useRouter} from "vue-router";
 
 export default function useProducts() {
   const products = ref([])
+  const product = ref([])
+  const errors = ref('')
+  const { router } = useRouter()
 
   const getProducts = async () => {
     await axios
@@ -37,7 +41,7 @@ export default function useProducts() {
         {
           headers: {
             'Content-Type': 'multipart/form-data',
-            Accept: 'application/json'
+            'Accept': 'application/json'
           }
         }
       )
