@@ -1,0 +1,16 @@
+@import 'base';
+@import 'blocks/style';
+
+h1 {
+  @apply text-3xl font-bold text-yellow-600;
+}
+
+h1 {
+  @apply text-3xl font-light text-blue-600;
+}
+
+#app {
+  margin: 0 auto;
+  min-height: 100vh;
+  font-weight: normal;
+}
