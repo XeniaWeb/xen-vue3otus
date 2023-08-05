@@ -59,7 +59,7 @@ const previewPhotoPath = computed(() => {
       <h1 class="pb-4 text-amber-700">Это домашняя страница</h1>
       <div class="block text-xl">
         <p>Список товаров вы найдете на странице Products или по кнопке ниже</p>
-        <RouterLink :to="{ name: 'products' }" class="btn-primary"> Список товаров</RouterLink>
+        <RouterLink :to="{ name: 'products.index' }" class="btn-primary"> Список товаров</RouterLink>
       </div>
     </div>
   </BaseLayout>
