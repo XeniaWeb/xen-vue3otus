@@ -5,7 +5,7 @@ const product = defineProps([
   'description',
   'price',
   'categoryId',
-  'categoryTitle',
+  'categoryTitle'
 ])
 </script>
 

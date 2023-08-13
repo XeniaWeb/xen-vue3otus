@@ -42,6 +42,16 @@ const router = createRouter({
       path: '/add-product-non-validate',
       name: 'add_product_non_validate',
       component: () => import('../views/pages/AddProductNonValidateView.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/pages/LoginView.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/pages/RegisterView.vue')
     }
   ]
 })

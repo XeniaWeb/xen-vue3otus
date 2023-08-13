@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted } from 'vue'
 import BaseLayout from '@/views/layouts/BaseLayout.vue'
-import useProducts from '@/composables/products'
 import ProductCard from '@/components/ProductCard.vue'
+import useProducts from '@/composables/products'
 import { RouterLink } from 'vue-router'
 
 const { products, getProducts } = useProducts()
@@ -16,7 +16,7 @@ onMounted(getProducts)
         <h1 class="font-montserrat text-amber-500">Products Page</h1>
         <div class="flex items-center justify-between">
           <RouterLink :to="{ name: 'add_product_non_validate' }" class="main-nav__item">
-            <button class="btn-primary text-sm font-bold">Add New  w/o Validate</button>
+            <button class="btn-primary text-sm font-bold">Add New w/o Validate</button>
           </RouterLink>
           <RouterLink :to="{ name: 'add_product' }" class="main-nav__item pl-2">
             <button class="btn-primary text-sm font-bold">Add New</button>
