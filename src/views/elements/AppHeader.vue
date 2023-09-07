@@ -1,10 +1,10 @@
 <script setup>
 import AppLogoXeniaWeb from '@/views/elements/AppLogoXeniaWeb.vue'
 import AppNavigation from '@/views/elements/AppNavigation.vue'
-import { RouterLink } from 'vue-router'
+import {RouterLink} from 'vue-router'
 import SearchForm from '@/components/form/SearchForm.vue'
-import { UserIcon } from '@heroicons/vue/24/outline'
-import { ShoppingCartIcon } from '@heroicons/vue/24/outline'
+import {UserIcon} from '@heroicons/vue/24/outline'
+import {ShoppingCartIcon} from '@heroicons/vue/24/outline'
 </script>
 
 <template>
@@ -14,14 +14,28 @@ import { ShoppingCartIcon } from '@heroicons/vue/24/outline'
         <div class="top-menu__contacts contacts flex">
           <div class="contacts__item contacts__item--title">Chat with us</div>
           <a href="tel:+41764104101" class="contacts__item contacts__item--phone inline-block"
-            >+41 76 410 4101</a
+          >+41 76 410 4101</a
           >
           <a href="mailto:info@xeniaweb.ch" class="contacts__item contacts__item--email"
-            >info@xeniaweb.ch</a
+          >info@xeniaweb.ch</a
           >
         </div>
         <div class="main-nav flex items-center">
-          <AppNavigation />
+          <AppNavigation/>
+        </div>
+        <div class="">
+          <RouterLink :to="{ name: 'login' }" class="main-nav__item ml-2 ">
+          <button class="rounded-lg border border-amber-600 bg-amber-600 px-4 py-1
+                    font-montserrat text-sm font-bold text-white transition-colors hover:bg-amber-500">
+            LogIn
+          </button>
+        </RouterLink>
+          <RouterLink :to="{ name: 'register' }" class="main-nav__item ml-2 ">
+            <button class="rounded-lg border border-amber-600 bg-amber-600 px-4 py-1
+                    font-montserrat text-sm font-bold text-white transition-colors hover:bg-amber-500">
+              SignUp
+            </button>
+          </RouterLink>
         </div>
       </nav>
       <div class="mx-auto my-4 flex max-w-7xl items-center justify-between">
@@ -34,18 +48,18 @@ import { ShoppingCartIcon } from '@heroicons/vue/24/outline'
             width="130"
           />
         </RouterLink>
-        <SearchForm />
+        <SearchForm/>
         <nav>
           <ul class="flex">
             <li>
               <a href="#">
-                <UserIcon class="h-6 w-6 stroke-amber-700" />
+                <UserIcon class="h-6 w-6 stroke-amber-700"/>
               </a>
             </li>
             <li class="ml-4">
-              <a href="#">
-                <ShoppingCartIcon class="h-6 w-6 stroke-amber-700" />
-              </a>
+              <RouterLink :to="{ name: 'cart' }" class="main-nav__item">
+                <ShoppingCartIcon class="h-6 w-6 stroke-amber-700"/>
+              </RouterLink>
             </li>
           </ul>
         </nav>
