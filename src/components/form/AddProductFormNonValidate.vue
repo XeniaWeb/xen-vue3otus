@@ -13,7 +13,7 @@ const newProduct = reactive({
 })
 
 const { categories, getCategories } = useCategories()
-const { storeProduct } = useProducts()
+const { storeProduct, validationErrors } = useProducts()
 
 onMounted(getCategories)
 
@@ -31,7 +31,7 @@ const previewPhotoPath = computed(() => {
 
 <template>
   <div class="flex flex-col px-8 py-8">
-    <form @submit="storeProduct(newProduct)">
+    <form @submit.prevent="storeProduct(newProduct)">
       <fieldset class="form__fieldset mb-16">
         <legend class="form__legend font-montserrat text-xl font-bold">New Product</legend>
         <div class="form__sub-legend mb-8 flex w-full">
@@ -52,6 +52,11 @@ const previewPhotoPath = computed(() => {
           >
             Title:
           </label>
+          <div class="mt-1 text-red-600">
+            <div v-for="message in validationErrors?.title">
+              {{ message }}
+            </div>
+          </div>
         </div>
         <div class="mb-8">
           <select
@@ -70,6 +75,11 @@ const previewPhotoPath = computed(() => {
           >
             Category:
           </label>
+          <div class="mt-1 text-red-600">
+            <div v-for="message in validationErrors?.categoryId">
+              {{ message }}
+            </div>
+          </div>
         </div>
         <div class="mb-8">
           <input
@@ -82,6 +92,11 @@ const previewPhotoPath = computed(() => {
           <label class="absolute -top-2 left-0 font-montserrat font-semibold" for="price">
             Price:
           </label>
+          <div class="mt-1 text-red-600">
+            <div v-for="message in validationErrors?.price">
+              {{ message }}
+            </div>
+          </div>
         </div>
 
         <div class="mb-8">
@@ -96,6 +111,11 @@ const previewPhotoPath = computed(() => {
           <label class="absolute -top-2 left-0 font-montserrat font-semibold" for="description">
             Description:
           </label>
+          <div class="mt-1 text-red-600">
+            <div v-for="message in validationErrors?.description">
+              {{ message }}
+            </div>
+          </div>
         </div>
         <div class="mb-8 inline-flex rounded-xl p-4 shadow">
           <input
@@ -104,7 +124,6 @@ const previewPhotoPath = computed(() => {
             type="file"
             @change="uploadFile"
           />
-
           <img v-if="newProduct.image" :src="previewPhotoPath" alt="" class="ml-8 h-36 w-auto" />
         </div>
       </fieldset>

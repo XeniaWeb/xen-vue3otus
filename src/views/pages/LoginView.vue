@@ -1,11 +1,11 @@
 <script setup>
 import BaseLayout from '@/views/layouts/BaseLayout.vue'
-import AddProductFormNonValidate from '@/components/form/AddProductFormNonValidate.vue'
+import LoginForm from '@/components/form/auth/LoginForm.vue'
 </script>
 
 <template>
   <BaseLayout>
-    <AddProductFormNonValidate />
+    <LoginForm />
   </BaseLayout>
 </template>
 
